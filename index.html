@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.tabs {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+}
+
+.tab {
+  padding: 10px;
+  color: #fff;
+  font-weight: bold;
+  border: 1px solid grey;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.main-tab {
+  background-color: darkgrey;
+  outline: 1px solid grey;
+}
+
+.options-tab {
+  background-color: darkorange;
+  outline: 1px solid grey;
+}
+
+.tab:hover {
+  border-color: lightgrey;
+  color: grey;
+  transition: border-color 0.5s, color 0.5s;
+}
+
+.content {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.title {
+  font-size: 24px;
+}
+
+.main-button {
+  padding: 10px 20px;
+  font-size: 18px;
+}
+
+.sub-heading {
+  font-size: 20px;
+}
+</style>
+</head>
+<body>
+<div class="tabs">
+    <button class="tab main-tab" onclick="changeTab('main')">Main</button>
+    <button class="tab options-tab" onclick="changeTab('options')">Options</button>
+</div>
+
+<div id="main-content" class="content">
+    <h1 id="title" class="title">0 clicky</h1>
+    <button id="clickyButton" class="main-button" onclick="incrementCount()">clicky</button>
+</div>
+
+<div id="options-content" class="content" style="display: none;">
+    <h2 class="sub-heading">wip.</h2>
+</div>
+
+<script>
+var count = 0;
+
+function incrementCount() {
+  count++;
+  document.getElementById("title").innerHTML = count + " clicky";
+}
+
+function changeTab(tabName) {
+  var tabs = document.getElementsByClassName("tab");
+  for (var i = 0; i < tabs.length; i++) {
+    tabs[i].classList.remove("active");
+  }
+  
+  var content = document.getElementsByClassName("content");
+  for (var i = 0; i < content.length; i++) {
+    content[i].style.display = "none";
+  }
+  
+  document.getElementById(tabName + "-tab").classList.add("active");
+  document.getElementById(tabName + "-content").style.display = "block";
+}
+</script>
+</body>
+</html>
